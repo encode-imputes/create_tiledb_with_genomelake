@@ -5,7 +5,7 @@
 chunk=$1
 tiledbbasedir=$2
 for line in $(cat $1); do 
-	tiledbdir=$(echo "$line" | sed 's/\.bigwig$//g')
-	python load_into_tiledb.py "$line" $tiledbdir
+	tiledbname="$tiledbbasedir"$(basename $line | sed 's/\.bigwig$//g')
+	python load_into_tiledb.py "$line" $tiledbname
 done
 
